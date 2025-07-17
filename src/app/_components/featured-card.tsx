@@ -3,7 +3,7 @@
 import { useState } from "react"
 import * as LucideIcons from "lucide-react"
 import { Button } from "~/components/ui/button"
-import { cn } from "~/lib/utils" // Optional: className merging utility if you use one
+import { cn } from "~/lib/utils"
 
 export const FeatureCard = ({
   iconName,
@@ -20,41 +20,48 @@ export const FeatureCard = ({
   const Icon = LucideIcons[iconName] ?? LucideIcons.CircleAlert
 
   return (
-    <div
+    <article
       className={cn(
-        "shrink-0 w-72 bg-gray-850 border border-gray-700 rounded-2xl p-6",
-        "hover:border-gray-600 hover:shadow-md hover:shadow-black/20 transition-all duration-200",
-        "flex flex-col justify-between"
+        "shrink-0 w-72 rounded-2xl border transition-all duration-200",
+        "bg-white text-black border-gray-200 shadow-sm hover:shadow-md",
+        "dark:bg-zinc-900 dark:text-white dark:border-zinc-700"
       )}
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 bg-gray-700 rounded-md">
-          <Icon className="h-5 w-5 text-primary" />
+      <div className="p-6 flex flex-col justify-between h-full">
+        {/* Icon and Title */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-md bg-gray-100 text-primary dark:bg-zinc-800 dark:text-white">
+            <Icon className="h-5 w-5" />
+          </div>
+          <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
         </div>
-        <h3 className="text-lg font-semibold text-white tracking-tight">
-          {title}
-        </h3>
-      </div>
 
-      <p
-        className={cn(
-          "text-sm text-white/80 leading-relaxed transition-all duration-150",
-          expanded ? "line-clamp-none" : "line-clamp-3"
-        )}
-      >
-        {expanded ? description : summary}
-      </p>
-
-      <div className="mt-4">
-        <Button
-          variant="link"
-          size="sm"
-          className="text-xs text-white/60 px-0 hover:text-white"
-          onClick={() => setExpanded((prev) => !prev)}
+        {/* Description */}
+        <p
+          className={cn(
+            "text-sm leading-relaxed transition-all duration-150",
+            "text-gray-700 dark:text-gray-300",
+            expanded ? "line-clamp-none" : "line-clamp-3"
+          )}
         >
-          {expanded ? "Show less" : "Read more"}
-        </Button>
+          {expanded ? description : summary}
+        </p>
+
+        {/* Toggle Button */}
+        <div className="mt-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            className={cn(
+              "text-xs px-0 underline underline-offset-2",
+              "text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+            )}
+            onClick={() => setExpanded((prev) => !prev)}
+          >
+            {expanded ? "Show less" : "Read more"}
+          </Button>
+        </div>
       </div>
-    </div>
+    </article>
   )
 }

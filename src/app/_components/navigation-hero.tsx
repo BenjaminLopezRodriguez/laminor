@@ -53,7 +53,7 @@ export default function NavigationHero() {
               alt="Laminor Logo"
               className="object-contain dark:invert"
             />
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            <h1 className="text-3xl dark:text-white text-black sm:text-4xl font-bold tracking-tight">
               Laminor
             </h1>
           </div>
