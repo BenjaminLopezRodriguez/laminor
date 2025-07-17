@@ -29,6 +29,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Separator } from "~/components/ui/separator";
+import Image from "next/image";
 
 const features = [
   {
@@ -65,28 +66,46 @@ const Home: NextPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-slate-200 selection:bg-blue-600 selection:text-white">
       {/* Navigation Hero */}
-      <section className="w-full bg-gray-950 text-white py-20 px-8">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-extrabold tracking-tight mb-10 select-text">
+
+    <section className="w-full bg-gray-950 text-white py-20 px-6 md:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+        {/* Header */}
+        <div className="flex items-center space-x-4">
+          <Image
+            src="/icon.png"
+            width={62}
+            height={30}
+            alt="Laminor Logo"
+            className="object-contain"
+          />
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight select-text">
             Laminor
           </h1>
-
-          {/* Horizontal Ribbon with scroll snap */}
-          <ScrollArea className="w-full whitespace-nowrap" type="hover">
-            <div
-              className="flex space-x-6 px-2 pb-3 scroll-pl-6 snap-x snap-mandatory"
-              style={{ scrollSnapType: "x mandatory" }}
-            >
-              {features.map((feature) => (
-                <div key={feature.title} className="snap-start">
-                  <FeatureCard {...feature} />
-                </div>
-              ))}
-            </div>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
         </div>
-      </section>
+
+        {/* Scrollable Feature Ribbon */}
+        <ScrollArea type="hover" className="w-full">
+          <div
+            className="flex gap-6 pb-3 px-1 sm:px-2 scroll-pl-6 snap-x snap-mandatory"
+            style={{ scrollSnapType: "x mandatory" }}
+          >
+            {features.map((feature) => (
+              <div key={feature.title} className="snap-start shrink-0">
+                <FeatureCard
+                  iconName={feature.iconName}
+                  title={feature.title}
+                  summary={feature.summary}
+                  description={feature.description}
+                />
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      </div>
+    </section>
+  
+
 
       {/* Hero Section */}
       <section className="container mx-auto px-6 py-24 text-center max-w-4xl">
