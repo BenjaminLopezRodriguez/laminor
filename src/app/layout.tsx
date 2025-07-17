@@ -7,6 +7,9 @@ import { Special_Gothic_Expanded_One } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 import { Manrope } from "next/font/google"
 
+import { ThemeProvider } from "next-themes";
+
+
 export const metadata: Metadata = {
   title: "Laminor",
   description: "AI infrastructure services for real-world mobility.",
@@ -40,9 +43,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
 <html lang="en" className={`${manrope.variable} font-sans antialiased dark`}>
+
   <body className="bg-background text-foreground">
+  <ThemeProvider attribute="class">
+
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        </ThemeProvider>
+
       </body>
+
     </html>
   );
 }

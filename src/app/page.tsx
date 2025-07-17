@@ -1,195 +1,88 @@
 import { type NextPage } from "next";
-import {
-  Button,
-} from "~/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "~/components/ui/card";
-import {
-  ScrollArea,
-  ScrollBar,
-} from "~/components/ui/scroll-area";
+import { Button } from "~/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription } from "~/components/ui/card";
+import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
 import { FeatureCard } from "./_components/featured-card";
-import {
-  Layers,
-  BrainCircuit,
-  RefreshCw,
-  Globe,
-  Cpu,
-  Database,
-  Lock,
-  Code,
-  Play,
-  Globe2,
-  Radar,
-  Camera,
-  ShieldCheck,
-} from "lucide-react";
 import { Separator } from "~/components/ui/separator";
 import Image from "next/image";
+import { 
+  Layers, BrainCircuit, RefreshCw, Cpu, 
+  Database, Lock, Code, Play, 
+  ChevronDown
+} from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { ThemeToggle } from "./_components/theme-toggle";
+import NavigationHero from "./_components/navigation-hero";
+import MapWriteIntro from "./_components/sections/mapwrite";
 
 const features = [
   {
     iconName: "Radar",
     title: "EdgeMap",
     summary: "Real-time mapping with edge inference.",
-    description:
-      "EdgeMap uses edge-deployed compute to continuously track and localize road condition changes, enabling rapid geofencing and detour automation.",
+    description: "EdgeMap uses edge-deployed compute to continuously track and localize road condition changes.",
   },
   {
     iconName: "Globe2",
     title: "EcoRoute",
     summary: "Smart routing for low emissions.",
-    description:
-      "EcoRoute calculates optimal travel paths that minimize carbon output and fuel usage by combining traffic, topography, and vehicle type data.",
+    description: "EcoRoute calculates optimal travel paths that minimize carbon output and fuel usage.",
   },
   {
     iconName: "Camera",
     title: "Sightline",
     summary: "Computer vision for autonomy.",
-    description:
-      "Sightline combines LIDAR and camera input into a fused perception stream to detect hazards, navigate, and classify real-time infrastructure context.",
+    description: "Sightline combines LIDAR and camera input into a fused perception stream.",
   },
   {
     iconName: "ShieldCheck",
     title: "Guardian",
     summary: "Edge AI for threat detection.",
-    description:
-      "Guardian identifies security anomalies and threat patterns from camera, acoustic, and environmental sensors across smart infrastructure grids.",
+    description: "Guardian identifies security anomalies from camera and environmental sensors.",
   },
 ];
 
 const Home: NextPage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-slate-200 selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
       {/* Navigation Hero */}
+      <NavigationHero/>
 
-    <section className="w-full bg-gray-950 text-white py-20 px-6 md:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col gap-10">
-        {/* Header */}
-        <div className="flex items-center space-x-4">
-          <Image
-            src="/icon.png"
-            width={62}
-            height={30}
-            alt="Laminor Logo"
-            className="object-contain"
-          />
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight select-text">
-            Laminor
-          </h1>
-        </div>
-
-        {/* Scrollable Feature Ribbon */}
-        <ScrollArea type="hover" className="w-full">
-          <div
-            className="flex gap-6 pb-3 px-1 sm:px-2 scroll-pl-6 snap-x snap-mandatory"
-            style={{ scrollSnapType: "x mandatory" }}
-          >
-            {features.map((feature) => (
-              <div key={feature.title} className="snap-start shrink-0">
-                <FeatureCard
-                  iconName={feature.iconName}
-                  title={feature.title}
-                  summary={feature.summary}
-                  description={feature.description}
-                />
-              </div>
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      </div>
-    </section>
-  
 
 
       {/* Hero Section */}
-      <section className="w-full bg-gray-950 text-white py-16 px-6 md:px-8">
-  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-6">
-    <Image
-      src="/cursoricon.png"
-      width={62}
-      height={62}
-      alt="Laminor Logo"
-      className="object-contain shrink-0"
-    />
-
-    <div className="flex flex-col gap-3">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-        Introducing <span className="text-primary">Laminor MapWrite</span>
-      </h1>
-      <p className="text-lg sm:text-xl text-white/80 max-w-2xl">
-        The simplest way to publish immersive, spatial-first ads across the most popular map providers—automated and scalable.
-      </p>
-    </div>
-  </div>
-</section>
-
-      <section className="container mx-auto px-6 py-24 text-center max-w-4xl">
-        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-          Industrial-Grade Spatial Mapping for Modern Infrastructure
-        </h1>
-        <p className="text-white/70 text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-          Power your systems with actionable geospatial intelligence, layered
-          data, and secure real-time updates.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-5">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg shadow-md transition">
-            Request Demo
-          </Button>
-          <Button
-            variant="outline"
-            className="border-neutral-700 text-white px-8 py-3 rounded-lg text-lg shadow-sm hover:bg-neutral-800 transition"
-          >
-            Learn More
-          </Button>
-        </div>
-      </section>
+      <MapWriteIntro/>
 
       {/* Features Grid */}
-      <section
-        id="features"
-        className="container mx-auto px-6 py-20 max-w-6xl"
-        aria-label="Key Features"
-      >
-        <h2 className="text-4xl font-extrabold mb-6 text-center tracking-tight">
-          Key Features
-        </h2>
-        <p className="text-center text-white/60 max-w-3xl mx-auto mb-16 leading-relaxed">
-          Robust features designed to scale and evolve with your enterprise
-          needs.
+      <section className="container mx-auto px-4 py-12 max-w-5xl">
+        <h2 className="text-2xl font-bold mb-4 text-center">Key Features</h2>
+        <p className="text-center text-black/70 dark:text-white/70 max-w-2xl mx-auto mb-8">
+          Robust features designed to scale with your enterprise needs.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              icon: <Layers className="h-6 w-6 text-blue-500" />,
+              icon: <Layers className="h-5 w-5" />,
               title: "Dynamic Layers",
               desc: "Merge and visualize multiple data feeds in real-time maps.",
             },
             {
-              icon: <BrainCircuit className="h-6 w-6 text-blue-500" />,
+              icon: <BrainCircuit className="h-5 w-5" />,
               title: "AI Insights",
               desc: "Identify system patterns with intelligent recommendations.",
             },
             {
-              icon: <RefreshCw className="h-6 w-6 text-blue-500" />,
+              icon: <RefreshCw className="h-5 w-5" />,
               title: "Live Sync",
               desc: "Seamless data refresh across distributed systems.",
             },
           ].map(({ icon, title, desc }) => (
-            <Card
-              key={title}
-              className="bg-neutral-800 border border-neutral-700 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <CardHeader className="flex gap-4 items-center">
-                <div className="p-3 bg-blue-900 rounded-lg">{icon}</div>
+            <Card key={title} className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800">
+              <CardHeader className="flex gap-3 items-center">
+                <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-md">{icon}</div>
                 <div>
-                  <CardTitle className="text-lg text-white">{title}</CardTitle>
-                  <CardDescription className="text-white/70 mt-1 text-sm">
+                  <CardTitle>{title}</CardTitle>
+                  <CardDescription className="text-black/70 dark:text-white/70 text-sm">
                     {desc}
                   </CardDescription>
                 </div>
@@ -200,63 +93,58 @@ const Home: NextPage = () => {
       </section>
 
       {/* Tech Highlights */}
-      <section className="bg-neutral-800 py-24 border-t border-b border-neutral-700">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+      <section className="bg-gray-100 dark:bg-gray-900 py-12 border-t border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-4xl font-extrabold mb-6 tracking-tight">
-                Engineered for Scale & Security
-              </h2>
-              <p className="text-white/70 mb-10 leading-relaxed max-w-lg">
-                Built on a modern stack to ensure performance, compliance, and
-                interoperability.
+              <h2 className="text-2xl font-bold mb-4">Engineered for Scale</h2>
+              <p className="text-black/70 dark:text-white/70 mb-6 leading-relaxed">
+                Built on a modern stack for performance and interoperability.
               </p>
-              <div className="grid grid-cols-2 gap-8 max-w-md">
+              <div className="grid grid-cols-2 gap-4">
                 {[
                   {
-                    icon: <Cpu className="h-5 w-5 text-blue-400" />,
+                    icon: <Cpu className="h-4 w-4" />,
                     title: "High Performance",
-                    desc: "Designed for real-time rendering of large data sets.",
+                    desc: "Real-time rendering of large data sets.",
                   },
                   {
-                    icon: <Database className="h-5 w-5 text-purple-400" />,
-                    title: "Multi-Cloud Ready",
-                    desc: "Flexible deployment across cloud providers.",
+                    icon: <Database className="h-4 w-4" />,
+                    title: "Multi-Cloud",
+                    desc: "Flexible deployment across providers.",
                   },
                   {
-                    icon: <Lock className="h-5 w-5 text-blue-400" />,
+                    icon: <Lock className="h-4 w-4" />,
                     title: "Encryption",
-                    desc: "Secure communications with 256-bit encryption.",
+                    desc: "Secure 256-bit encryption.",
                   },
                   {
-                    icon: <Code className="h-5 w-5 text-purple-400" />,
+                    icon: <Code className="h-4 w-4" />,
                     title: "Developer Tools",
-                    desc: "Comprehensive SDKs and API documentation.",
+                    desc: "SDKs and API documentation.",
                   },
                 ].map(({ icon, title, desc }) => (
-                  <div key={title} className="flex gap-3">
-                    <div className="mt-1">{icon}</div>
+                  <div key={title} className="flex gap-2">
+                    <div className="mt-0.5">{icon}</div>
                     <div>
-                      <h4 className="font-semibold text-white text-sm">
-                        {title}
-                      </h4>
-                      <p className="text-white/60 text-xs leading-snug">{desc}</p>
+                      <h4 className="font-medium text-sm">{title}</h4>
+                      <p className="text-black/70 dark:text-white/70 text-xs">{desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-neutral-900 p-10 rounded-xl border border-neutral-700 shadow-lg flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-blue-700 rounded-lg flex items-center justify-center mb-5">
-                <Play className="h-7 w-7 text-white" />
+            <div className="bg-white dark:bg-black p-6 rounded-lg border border-gray-200 dark:border-gray-800 flex flex-col items-center text-center">
+              <div className="w-12 h-12 bg-black dark:bg-white rounded-md flex items-center justify-center mb-3">
+                <Play className="h-5 w-5 text-white dark:text-black" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">System Architecture</h3>
-              <p className="text-white/70 text-sm mb-6 max-w-xs leading-relaxed">
+              <h3 className="font-medium mb-1">System Architecture</h3>
+              <p className="text-black/70 dark:text-white/70 text-sm mb-3">
                 Explore how it all fits together
               </p>
               <Button
                 variant="outline"
-                className="border-blue-600 hover:bg-blue-700 hover:text-white text-blue-400 px-6 py-2 rounded-lg text-sm transition"
+                className="border-black dark:border-white px-4 py-1 rounded-md text-sm"
               >
                 View Tech Specs
               </Button>
@@ -266,23 +154,17 @@ const Home: NextPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-6 py-24 max-w-4xl text-center">
-        <div className="bg-neutral-900 border border-neutral-700 rounded-2xl p-14 shadow-lg">
-          <h2 className="text-4xl font-extrabold mb-5 tracking-tight">
-            Start building with Laminor
-          </h2>
-          <p className="text-white/70 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Join innovative teams transforming operations with our geospatial
-            intelligence tools.
+      <section className="container mx-auto px-4 py-16 max-w-3xl text-center">
+        <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl p-8">
+          <h2 className="text-2xl font-bold mb-3">Start building with Laminor</h2>
+          <p className="text-black/70 dark:text-white/70 mb-6">
+            Join teams transforming operations with our geospatial tools.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg shadow-lg transition">
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Button className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-md hover:bg-gray-800 dark:hover:bg-gray-200">
               Contact Sales
             </Button>
-            <Button
-              variant="outline"
-              className="border-neutral-700 text-white px-8 py-4 rounded-lg text-lg shadow-sm hover:bg-neutral-800 transition"
-            >
+            <Button variant="outline" className="border-black dark:border-white text-black dark:text-white px-6 py-2 rounded-md">
               View Pricing
             </Button>
           </div>
@@ -290,63 +172,33 @@ const Home: NextPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-neutral-950 border-t border-neutral-800 text-sm text-white/60">
-        <div className="container mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-14">
+      <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 text-sm">
+        <div className="container mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div>
-            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-              <Globe className="h-5 w-5 text-blue-500" /> Laminor
-            </h3>
-            <p className="max-w-xs leading-relaxed">
-              Modern infrastructure deserves modern intelligence.
-            </p>
+            <h3 className="font-medium mb-2">Laminor</h3>
+            <p className="text-black/70 dark:text-white/70">Modern infrastructure intelligence.</p>
           </div>
-          <nav>
-            <h4 className="text-white mb-3 font-semibold">Product</h4>
-            <ul className="space-y-2">
-              {["Features", "Solutions", "Pricing", "Demo"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="hover:text-white transition">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <nav>
-            <h4 className="text-white mb-3 font-semibold">Resources</h4>
-            <ul className="space-y-2">
-              {["Docs", "API", "Blog", "Case Studies"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="hover:text-white transition">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <nav>
-            <h4 className="text-white mb-3 font-semibold">Company</h4>
-            <ul className="space-y-2">
-              {["About", "Careers", "Contact", "Press"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="hover:text-white transition">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {["Product", "Resources", "Company"].map((section) => (
+            <nav key={section}>
+              <h4 className="font-medium mb-2">{section}</h4>
+              <ul className="space-y-1">
+                {Array(4).fill(0).map((_, i) => (
+                  <li key={i}>
+                    <a href="#" className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white">
+                      {section} {i+1}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
-        <Separator className="bg-neutral-800" />
-        <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-white/70 text-sm select-none">
-          <p>© {new Date().getFullYear()} Laminor Technologies. All rights reserved.</p>
-          <div className="flex gap-6">
+        <Separator className="bg-gray-200 dark:bg-gray-800" />
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
+          <p className="text-black/70 dark:text-white/70">© {new Date().getFullYear()} Laminor Technologies.</p>
+          <div className="flex gap-4">
             {["Privacy", "Terms", "Security"].map((item) => (
-              <a
-                href="#"
-                key={item}
-                className="hover:text-white transition cursor-pointer"
-              >
+              <a href="#" key={item} className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white">
                 {item}
               </a>
             ))}
