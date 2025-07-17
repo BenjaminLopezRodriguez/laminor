@@ -108,6 +108,27 @@ const Home: NextPage = () => {
 
 
       {/* Hero Section */}
+      <section className="w-full bg-gray-950 text-white py-16 px-6 md:px-8">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-6">
+    <Image
+      src="/cursoricon.png"
+      width={62}
+      height={62}
+      alt="Laminor Logo"
+      className="object-contain shrink-0"
+    />
+
+    <div className="flex flex-col gap-3">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        Introducing <span className="text-primary">Laminor MapWrite</span>
+      </h1>
+      <p className="text-lg sm:text-xl text-white/80 max-w-2xl">
+        The simplest way to publish immersive, spatial-first ads across the most popular map providers—automated and scalable.
+      </p>
+    </div>
+  </div>
+</section>
+
       <section className="container mx-auto px-6 py-24 text-center max-w-4xl">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
           Industrial-Grade Spatial Mapping for Modern Infrastructure
