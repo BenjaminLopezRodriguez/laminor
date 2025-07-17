@@ -14,25 +14,29 @@ const features = [
     iconName: "Radar",
     title: "EdgeMap",
     summary: "Real-time mapping with edge inference.",
-    description: "EdgeMap uses edge-deployed compute to continuously track and localize road condition changes.",
+    description:
+      "EdgeMap uses edge-deployed compute to continuously track and localize road condition changes.",
   },
   {
     iconName: "Globe2",
     title: "EcoRoute",
     summary: "Smart routing for low emissions.",
-    description: "EcoRoute calculates optimal travel paths that minimize carbon output and fuel usage.",
+    description:
+      "EcoRoute calculates optimal travel paths that minimize carbon output and fuel usage.",
   },
   {
     iconName: "Camera",
     title: "Sightline",
     summary: "Computer vision for autonomy.",
-    description: "Sightline combines LIDAR and camera input into a fused perception stream.",
+    description:
+      "Sightline combines LIDAR and camera input into a fused perception stream.",
   },
   {
     iconName: "ShieldCheck",
     title: "Guardian",
     summary: "Edge AI for threat detection.",
-    description: "Guardian identifies security anomalies from camera and environmental sensors.",
+    description:
+      "Guardian identifies security anomalies from camera and environmental sensors.",
   },
 ];
 
@@ -41,8 +45,8 @@ export default function NavigationHero() {
   const [showServices, setShowServices] = useState(false);
 
   return (
-    <section className="w-full bg-white dark:bg-black text-black dark:text-white py-12 px-4 md:px-6 border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-6xl mx-auto flex flex-col gap-4">
+    <section className="w-full border-b border-gray-200 bg-white px-4 py-12 text-black md:px-6 dark:border-gray-800 dark:bg-black dark:text-white">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4">
         {/* Top nav row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -53,7 +57,7 @@ export default function NavigationHero() {
               alt="Laminor Logo"
               className="object-contain dark:invert"
             />
-            <h1 className="text-3xl dark:text-white text-black sm:text-4xl font-bold tracking-tight">
+            <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl dark:text-white">
               Laminor
             </h1>
           </div>
@@ -62,10 +66,10 @@ export default function NavigationHero() {
             {/* Dropdown Toggle */}
             <Button
               variant="ghost"
-              className="text-black dark:text-white flex items-center gap-1"
+              className="flex items-center gap-1 text-black dark:text-white"
               onClick={() => setShowServices((prev) => !prev)}
             >
-              Services <ChevronDown className="w-4 h-4" />
+              Services <ChevronDown className="h-4 w-4" />
             </Button>
 
             {/* Theme toggle */}
@@ -74,7 +78,11 @@ export default function NavigationHero() {
               className="text-black dark:text-white"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
               <span className="sr-only">Toggle Theme</span>
             </Button>
           </div>
@@ -92,9 +100,9 @@ export default function NavigationHero() {
               className="w-full"
             >
               <ScrollArea type="hover" className="mt-4 w-full">
-                <div className="flex gap-4 pb-3 px-1 scroll-pl-6 snap-x snap-mandatory">
+                <div className="flex snap-x snap-mandatory scroll-pl-6 gap-4 px-1 pb-3">
                   {features.map((feature) => (
-                    <div key={feature.title} className="snap-start shrink-0">
+                    <div key={feature.title} className="shrink-0 snap-start">
                       <FeatureCard
                         iconName={feature.iconName}
                         title={feature.title}

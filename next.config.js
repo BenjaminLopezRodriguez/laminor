@@ -6,15 +6,15 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
-    eslint: {
-        ignoreDuringBuilds: true
-    },
-    typescript: {
-        ignoreBuildErrors: true
-    },
-    images: {
-        domains: ['picsum.photos'],
-      }
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ["picsum.photos"],
+  },
 };
 
 export default config;
