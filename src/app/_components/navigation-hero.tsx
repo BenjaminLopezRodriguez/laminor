@@ -136,6 +136,7 @@ import { FeatureCard } from "~/app/_components/featured-card";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 import { FeatureCardForRibbonMenu } from "./feature-card-ribbonmenu";
+import Link from "next/link";
 
 const features = [
   {
@@ -205,6 +206,19 @@ export default function NavigationHero() {
           {/* Buttons */}
           <div className="flex items-center gap-2">
             {/* Services toggle */}
+            <Button
+              size="sm"
+              variant="ghost"
+              className={clsx(
+                "group flex items-center gap-1 transition-colors rounded-full bg-black text-white dark:bg-white dark:text-black",
+                showServices && "bg-muted/70 dark:bg-muted/70"
+              )}
+            >
+                <Link href={"/u/mapwrite"}>
+                Get Started
+
+                </Link>
+              </Button>
             <Button
               size="sm"
               variant="ghost"
