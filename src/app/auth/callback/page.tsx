@@ -67,14 +67,20 @@ export async function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white">
       {/* Navigation Hero */}
+      <div className="fixed z-40 w-full ">
       <NavigationHero />
 
+      </div>
+
       {/* Hero Background + CTA */}
+      <div className="scroll-mt-56 mt-56">
+
+
       <section className="relative w-full overflow-hidden py-20">
         <div className=" inset-0 -z-10 m-auto ">
-          <Image src={"/herobg.png"} alt="Hero background" layout="fill" objectFit="contain" />
+          <Image src={"/herobg.png"} alt="Hero background" layout="fill" objectFit="contain" className="w-full " />
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center mx-auto max-w-1/2">
           <h2 className="mb-6 text-3xl font-semibold md:text-5xl">Experience Infrastructure Intelligence</h2>
           <Button size="lg" className="text-lg">
             PLAY DEMO
@@ -102,6 +108,7 @@ export async function Home() {
           </Card>
         ))}
       </section>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white text-sm dark:border-gray-800 dark:bg-black">
@@ -149,6 +156,8 @@ export async function Home() {
             ))}
           </div>
         </div>
+
+        
       </footer>
     </div>
   );
