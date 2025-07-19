@@ -10,5 +10,5 @@ export default authkitMiddleware({
 
 // ✅ Include '/' so 'app/page.tsx' is protected
 export const config = {
-  matcher: ['/','/auth', '/oldpage', '/account/:page*', '/dashboard/:path*', '/home-page'],
+  matcher: ['/','/_components', '/auth', '/oldpage', '/account/:page*', '/dashboard/:path*', '/home-page'],
 };

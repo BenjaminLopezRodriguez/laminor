@@ -1,3 +1,4 @@
+import APIDashboard from "~/app/_components/apidashboard";
 import NavigationHero from "~/app/_components/navigationhero";
 
 export default function Home() {
@@ -7,6 +8,8 @@ export default function Home() {
       <nav className="fixed z-50 w-full start-0 left-0">
         <NavigationHero />
       </nav>
+
+      <APIDashboard/>
 
       {/* Hero Section */}
       <section className="pt-42 px-6 py-16">
