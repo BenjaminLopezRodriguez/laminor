@@ -45,11 +45,9 @@ export default function RootLayout({
       className={`${manrope.variable} dark font-sans antialiased`}
     >
       <body className="bg-background text-foreground">
-        <AuthKitProvider>
           <ThemeProvider attribute="class">
             <TRPCReactProvider>{children}</TRPCReactProvider>
           </ThemeProvider>
-        </AuthKitProvider>
       </body>
     </html>
   );

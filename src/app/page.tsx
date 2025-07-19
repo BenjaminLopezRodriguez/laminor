@@ -52,32 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Technical Overview Section */}
-      <section className="px-6 py-16">
-        <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl font-bold mb-4 tracking-tight">How It Works</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-sm leading-relaxed">
-            Laminar Roads leverages a distributed inference network across participating sensors, vehicles, and edge compute infrastructure.
-            Each route segment is analyzed, classified, and uploaded to the Laminar core, where updates are versioned and indexed for downstream access.
-          </p>
-        </div>
-      </section>
 
-      {/* CTA / Footer */}
-      <section className="px-6 py-20 border-t border-white/10 bg-background/70 backdrop-blur-lg">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-semibold mb-3">Try the Demo</h3>
-          <p className="text-muted-foreground text-sm mb-6">
-            Explore a live inference overlay or connect your infrastructure for tailored deployment.
-          </p>
-          <a
-            href="/demo"
-            className="inline-block rounded-lg bg-indigo-600 px-6 py-2 text-sm font-medium text-white shadow hover:bg-indigo-700 transition-colors"
-          >
-            Launch Demo
-          </a>
-        </div>
-      </section>
     </main>
   );
 }

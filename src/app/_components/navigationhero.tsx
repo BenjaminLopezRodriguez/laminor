@@ -89,7 +89,7 @@ export default function NavigationHero() {
                 showServices && "bg-muted/70 dark:bg-muted/70"
               )}
             >
-                <Link href={"/u/mapwrite"}>
+                <Link href={"/auth"}>
                 Get Started
 
                 </Link>
