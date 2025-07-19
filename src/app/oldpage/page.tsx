@@ -28,7 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { ThemeToggle } from "../_components/theme-toggle";
-import NavigationHero from "../_components/navigation-hero";
+import NavigationHero from "../_components/navigationhero";
 import MapWriteIntro from "../_components/sections/mapwrite";
 
 const features = [

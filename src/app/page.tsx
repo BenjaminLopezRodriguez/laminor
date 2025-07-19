@@ -1,4 +1,4 @@
-import NavigationHero from "./_components/navigation-hero";
+import NavigationHero from "./_components/navigationhero";
 
 export default function Home() {
   return (
