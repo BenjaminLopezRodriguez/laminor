@@ -1,166 +1,83 @@
-import { type NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import NavigationHero from "./_components/navigation-hero";
 
-import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "~/components/ui/card";
-import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
-import { Separator } from "~/components/ui/separator";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
-import {
-  Layers,
-  BrainCircuit,
-  RefreshCw,
-  Cpu,
-  Database,
-  Lock,
-  Code,
-  Play,
-  ChevronDown,
-} from "lucide-react";
-
-import NavigationHero from "~/app/_components/navigation-hero";
-import MapWriteIntro from "~/app/_components/sections/mapwrite";
-
-const features = [
-  {
-    iconName: "Radar",
-    title: "EdgeMap",
-    summary: "Real-time mapping with edge inference.",
-    description:
-      "EdgeMap uses edge-deployed compute to continuously track and localize road condition changes.",
-  },
-  {
-    iconName: "Globe2",
-    title: "EcoRoute",
-    summary: "Smart routing for low emissions.",
-    description:
-      "EcoRoute calculates optimal travel paths that minimize carbon output and fuel usage.",
-  },
-  {
-    iconName: "Camera",
-    title: "Sightline",
-    summary: "Computer vision for autonomy.",
-    description:
-      "Sightline combines LIDAR and camera input into a fused perception stream.",
-  },
-  {
-    iconName: "ShieldCheck",
-    title: "Guardian",
-    summary: "Edge AI for threat detection.",
-    description:
-      "Guardian identifies security anomalies from camera and environmental sensors.",
-  },
-];
-
-export async function Home() {
+export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white">
-      {/* Navigation Hero */}
-      <div className="fixed z-40 w-full ">
-      <NavigationHero />
+    <main className="relative min-h-screen bg-background text-foreground">
+      {/* Fixed Navigation */}
+      <nav className="fixed z-50 w-full start-0 left-0">
+        <NavigationHero />
+      </nav>
 
-      </div>
-
-      {/* Hero Background + CTA */}
-      <div className="scroll-mt-56 mt-56">
-
-
-      <section className="relative w-full overflow-hidden py-20">
-        <div className=" inset-0 -z-10 m-auto ">
-          <Image src={"/herobg.png"} alt="Hero background" layout="fill" objectFit="contain" className="w-full " />
-        </div>
-        <div className="relative z-10 flex flex-col items-center justify-center text-center mx-auto max-w-1/2">
-          <h2 className="mb-6 text-3xl font-semibold md:text-5xl">Experience Infrastructure Intelligence</h2>
-          <Button size="lg" className="text-lg">
-            PLAY DEMO
-          </Button>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="container mx-auto grid gap-8 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
-        {features.map((feature, index) => (
-          <Card key={index} className="bg-white/5 p-6 shadow-md backdrop-blur-md dark:bg-white/10">
-            <CardHeader className="mb-4">
-              <CardTitle className="flex items-center gap-2 text-xl">
-                {/* TODO: Replace with dynamic icon mapping */}
-                <Layers size={20} />
-                {feature.title}
-              </CardTitle>
-              <CardDescription className="text-sm text-white/70 dark:text-white/60">
-                {feature.summary}
-              </CardDescription>
-            </CardHeader>
-            <p className="text-white/80 dark:text-white/70 text-sm">
-              {feature.description}
-            </p>
-          </Card>
-        ))}
-      </section>
-      </div>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white text-sm dark:border-gray-800 dark:bg-black">
-        <div className="container mx-auto grid grid-cols-2 gap-6 px-4 py-8 md:grid-cols-4">
-          <div>
-            <h3 className="mb-2 font-medium">Laminor</h3>
-            <p className="text-black/70 dark:text-white/70">
-              Modern infrastructure intelligence.
-            </p>
-          </div>
-          {["Product", "Resources", "Company"].map((section) => (
-            <nav key={section}>
-              <h4 className="mb-2 font-medium">{section}</h4>
-              <ul className="space-y-1">
-                {Array(4)
-                  .fill(0)
-                  .map((_, i) => (
-                    <li key={i}>
-                      <a
-                        href="#"
-                        className="text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
-                      >
-                        {section} {i + 1}
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </nav>
-          ))}
-        </div>
-        <Separator className="bg-gray-200 dark:bg-gray-800" />
-        <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-4 md:flex-row">
-          <p className="text-black/70 dark:text-white/70">
-            © {new Date().getFullYear()} Laminor Technologies.
+      {/* Hero Section */}
+      <section className="pt-42 px-6 py-16">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/20 bg-indigo-500/40 backdrop-blur-md p-6 shadow-xl">
+          <img
+            src="/demo.png"
+            alt="Demo"
+            className="mb-6 w-full rounded-2xl border border-white/10 object-cover"
+          />
+          <h1 className="mb-3 text-4xl font-bold tracking-tight md:text-5xl">
+            Introducing Laminar Roads
+          </h1>
+          <p className="mb-4 text-lg text-white/85">
+            Segmenting on-demand road data for autonomous systems and real-time infrastructure intelligence.
           </p>
-          <div className="flex gap-4">
-            {["Privacy", "Terms", "Security"].map((item) => (
-              <a
-                href="#"
-                key={item}
-                className="text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
-              >
-                {item}
-              </a>
-            ))}
+          <p className="text-sm text-white/60">
+            A unified geospatial intelligence layer powered by adaptive AI segmentation and federated edge data.
+          </p>
+        </div>
+      </section>
+
+      {/* Value Proposition Section */}
+      <section className="px-6 py-14 bg-muted/10 border-t border-white/10">
+        <div className="mx-auto max-w-6xl grid gap-8 md:grid-cols-3">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Real-Time Segmentation</h3>
+            <p className="text-muted-foreground text-sm">
+              Dynamically parse road types, lanes, and terrain conditions using edge AI models trained on diverse geographies.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Infrastructure Mapping</h3>
+            <p className="text-muted-foreground text-sm">
+              Fuse satellite, LiDAR, and ground data to produce high-confidence map overlays for cities and private networks.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Federated Intelligence</h3>
+            <p className="text-muted-foreground text-sm">
+              Learn continuously across fleets without compromising data locality, ensuring speed, safety, and compliance.
+            </p>
           </div>
         </div>
+      </section>
 
-        
-      </footer>
-    </div>
+      {/* Technical Overview Section */}
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="text-3xl font-bold mb-4 tracking-tight">How It Works</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto text-sm leading-relaxed">
+            Laminar Roads leverages a distributed inference network across participating sensors, vehicles, and edge compute infrastructure.
+            Each route segment is analyzed, classified, and uploaded to the Laminar core, where updates are versioned and indexed for downstream access.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA / Footer */}
+      <section className="px-6 py-20 border-t border-white/10 bg-background/70 backdrop-blur-lg">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-semibold mb-3">Try the Demo</h3>
+          <p className="text-muted-foreground text-sm mb-6">
+            Explore a live inference overlay or connect your infrastructure for tailored deployment.
+          </p>
+          <a
+            href="/demo"
+            className="inline-block rounded-lg bg-indigo-600 px-6 py-2 text-sm font-medium text-white shadow hover:bg-indigo-700 transition-colors"
+          >
+            Launch Demo
+          </a>
+        </div>
+      </section>
+    </main>
   );
 }
-
-export default Home;
