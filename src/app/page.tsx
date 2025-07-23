@@ -1,11 +1,65 @@
 import NavigationHero from "./_components/navigationhero";
 
+type FeatureItem = {
+  iconName: string;
+  title: string;
+  summary: string;
+  description: string;
+  href: string;
+};
+
 export default function Home() {
+  const customFeatures: FeatureItem[] = [
+    {
+      iconName: "Cloud",
+      title: "CloudScale",
+      summary: "Scalable cloud infrastructure",
+      description: "Elastic cloud solutions that grow with your business needs.",
+      href: "/cloud"
+    },
+    {
+      iconName: "Smartphone",
+      title: "MobileFirst",
+      summary: "Cross-platform apps",
+      description: "Build once and deploy everywhere with our unified mobile framework.",
+      href: "/mobile"
+    },
+    {
+      iconName: "Database",
+      title: "DataForge",
+      summary: "Big data solutions",
+      description: "Process and analyze massive datasets with our distributed systems.",
+      href: "/data"
+    },
+    {
+      iconName: "Users",
+      title: "TeamSync",
+      summary: "Collaboration tools",
+      description: "Keep your distributed teams aligned with our productivity suite.",
+      href: "/collaboration"
+    }
+  ];
+  
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       {/* Fixed Navigation */}
       <nav className="fixed z-50 w-full start-0 left-0">
-        <NavigationHero />
+      <NavigationHero
+  logo={{
+    src: "/icon.png",
+    alt: "Kamp",
+    width: 40,
+    height: 40
+  }}
+  brandName="Laminor"
+  primaryAction={{
+    label: "Sign Up",
+    href: "/signup"
+  }}
+  features={customFeatures}
+  className="border-b-2 border-primary"
+  dropdownClassName="bg-background/80"
+/>
       </nav>
 
       {/* Hero Section */}
