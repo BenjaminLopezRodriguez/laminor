@@ -84,19 +84,17 @@ export default function NavigationHero() {
       >
   
 
-  <LiquidGlass
-      glassStyle={glassStyle}
-      wrapperStyle={{
-        position: 'relative',
-        paddingTop: '0px',
-
-        left: 0,
-        right: 0,
-        zIndex: 50, // Added for proper layering
-      }}
-      style={``}
-    >
-        <div className="mx-auto pt-12 flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
+  
+        <div 
+        className="mx-auto pt-12 flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 
+        backdrop-blur-[12px] 
+        backdrop-contrast-125 
+        backdrop-brightness-110 
+        backdrop-saturate-150 
+        bg-white/30 
+        border-b border-white/20 
+        dark:bg-black/30  
+        dark:border-black/20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Image
@@ -155,7 +153,6 @@ export default function NavigationHero() {
             </Button>
           </div>
         </div>
-        </LiquidGlass>
 
 
   
@@ -168,14 +165,22 @@ export default function NavigationHero() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-0 top-full w-full border-t border-border bg-background/30 backdrop-blur-3xl shadow-xl"
+              className="absolute left-0 top-full w-full border-t 
+    backdrop-blur-[5px] 
+    backdrop-contrast-110 
+    backdrop-brightness-105 
+    backdrop-saturate-120 
+    bg-white/40 
+    border-b border-white/15 
+    dark:bg-black/40  
+    dark:border-black/15"
             >
            
            
 
 
            <ScrollArea type="hover" className="mt-4 w-full">
-                <div className="flex snap-x snap-mandatory scroll-pl-6 gap-4 px-1 pb-3">
+                <div className="flex snap-x snap-mandatory scroll-pl-6 gap-4 px-1 pb-3  ">
                   {features.map((feature) => ( 
                     <div key={feature.title} className="shrink-0 snap-start">
                       <FeatureCardForRibbonMenu
@@ -222,7 +227,7 @@ export const FeatureCardForRibbonMenu = ({
   return (
     <article
       className={cn(
-        "w-72 shrink-0 snap-start px-1 transition-all duration-200 hover:scale-[1.02] hover:saturate-150"
+        "  w-56 shrink-0 snap-start px-1 transition-all duration-200 "
       )}
     >
       <div className="flex flex-col gap-2">
