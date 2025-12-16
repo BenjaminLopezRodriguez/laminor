@@ -262,6 +262,33 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
+
+       {/* CREATING THE MANTRA SECTION */}
+       <section className="px-4 sm:px-6 py-16 md:py-24 relative overflow-hidden pt-56">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
+        <div className="mx-auto max-w-4xl text-center relative">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-50">
+            Turning data into useful insights
+          </h1>
+          <h2 className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+            Laminor ingests and converts data, evaluating & transforming data for governments, institutions, and business operations.
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="bg-white text-black shadow-xl shadow-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300">
+              <Link href="/demo">
+                Book a demo
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-2 hover:bg-background/50 backdrop-blur-sm transition-all duration-300">
+              <Link href="/analyze">Try out our tools</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+
       <section className="pt-32 md:pt-40 px-4 sm:px-6 py-12 md:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="relative rounded-3xl overflow-hidden border border-border/50 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 dark:from-indigo-500/20 dark:via-purple-500/20 dark:to-pink-500/20 backdrop-blur-xl p-6 md:p-8 lg:p-10 shadow-2xl">
