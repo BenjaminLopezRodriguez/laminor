@@ -240,3 +240,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom styles for retailer offer toast */
+.retailer-offer-toast {
+  z-index: 9999 !important;
+}
+
+.retailer-offer-toast [data-sonner-toast] {
+  background: black !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+  color: white !important;
+}
+
+/* Ensure Sonner toaster container has high z-index */
+[data-sonner-toaster] {
+  z-index: 9999 !important;
+}

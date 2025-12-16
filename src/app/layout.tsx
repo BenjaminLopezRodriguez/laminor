@@ -6,6 +6,7 @@ import { Work_Sans } from "next/font/google";
 import { Special_Gothic_Expanded_One } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 import { Manrope } from "next/font/google";
+import { Toaster } from "~/components/ui/sonner";
 
 import { ThemeProvider } from "next-themes";
 
@@ -43,10 +44,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${manrope.variable} dark font-sans antialiased`}
+      suppressHydrationWarning
     >
       <body className="bg-background text-foreground">
-          <ThemeProvider attribute="class">
+          <ThemeProvider 
+            attribute="class" 
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
             <TRPCReactProvider>{children}</TRPCReactProvider>
+            <Toaster />
           </ThemeProvider>
       </body>
     </html>

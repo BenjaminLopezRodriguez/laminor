@@ -1,9 +1,13 @@
 // src/app/page.tsx
+"use client";
+
+import { useEffect } from "react";
 import NavigationHero from "./_components/navigationhero";
 import { FeatureCard } from "./_components/featured-card";
 import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 import { 
   Camera, 
   Video, 
@@ -29,7 +33,9 @@ import {
   Eye,
   Lock,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Gift,
+  TrendingUp
 } from "lucide-react";
 
 type FeatureItem = {
@@ -41,6 +47,80 @@ type FeatureItem = {
 };
 
 export default function Home() {
+  useEffect(() => {
+    // Show retailer offer toast on page load with a small delay to ensure Toaster is mounted
+    const timer = setTimeout(() => {
+      try {
+        // Check if we're in the browser
+        if (typeof window === "undefined") return;
+        
+        const hasSeenOffer = sessionStorage.getItem("retailer-offer-seen");
+        if (!hasSeenOffer) {
+          const toastId = toast.custom(
+            (t) => (
+              <div className="bg-black text-white rounded-lg shadow-2xl p-6 max-w-md border border-white/10 z-[9999]">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 p-3 flex-shrink-0">
+                    <Gift className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="h-5 w-5 text-green-400" />
+                      <h3 className="font-bold text-lg">Exclusive Retailer Offer</h3>
+                    </div>
+                    <p className="text-white/90 mb-1 text-sm leading-relaxed">
+                      Get <span className="font-bold text-white">3 months FREE</span> when you sign up
+                    </p>
+                    <p className="text-white/70 text-xs mb-4">
+                      Experience <span className="font-semibold text-green-400">10x improvement</span> in inventory management
+                    </p>
+                    <div className="flex gap-3">
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("retailer-offer-seen", "true");
+                          window.location.href = "/auth?coupon=retailer-3months";
+                          toast.dismiss(t);
+                        }}
+                        className="bg-white text-black hover:bg-white/90 font-semibold flex-1"
+                        size="sm"
+                      >
+                        Redeem Now
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("retailer-offer-seen", "true");
+                          toast.dismiss(t);
+                        }}
+                        variant="ghost"
+                        className="text-white/70 hover:text-white hover:bg-white/10"
+                        size="sm"
+                      >
+                        Dismiss
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ),
+            {
+              duration: Infinity, // Keep it open until user interacts
+              position: "top-center",
+              className: "retailer-offer-toast",
+            }
+          );
+          console.log("Toast triggered:", toastId);
+        } else {
+          console.log("Toast already shown, skipping");
+        }
+      } catch (error) {
+        console.error("Error showing toast:", error);
+      }
+    }, 1000); // Increased delay to ensure Toaster is fully mounted
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const customFeatures: FeatureItem[] = [
     {
       iconName: "Cloud",

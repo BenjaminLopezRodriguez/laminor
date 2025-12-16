@@ -62,8 +62,14 @@ export default function NavigationHero() {
 
     const { theme, setTheme } = useTheme();
     const [showServices, setShowServices] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
   
+    // Track when component has mounted to prevent hydration mismatch
+    useEffect(() => {
+      setMounted(true);
+    }, []);
+
     // Close dropdown on outside click
     useEffect(() => {
       function handleClickOutside(e: MouseEvent) {
@@ -147,8 +153,15 @@ export default function NavigationHero() {
               variant="ghost"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="text-muted-foreground"
+              suppressHydrationWarning
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {!mounted ? (
+                <Sun className="h-4 w-4" />
+              ) : theme === "dark" ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
               <span className="sr-only">Toggle Theme</span>
             </Button>
           </div>
