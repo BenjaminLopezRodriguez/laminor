@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: laminor-db
+    environment:
+      POSTGRES_USER: laminor
+      POSTGRES_PASSWORD: laminor_password
+      POSTGRES_DB: laminor_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U laminor"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ML Service (Python)
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: laminor-ml-service
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - SAM_MODEL_PATH=${SAM_MODEL_PATH:-sam_vit_h_4b8939.pth}
+      - LLAMA_MODEL_PATH=${LLAMA_MODEL_PATH:-}
+      - GPT_OSS_MODEL_PATH=${GPT_OSS_MODEL_PATH:-}
+    volumes:
+      - ml_uploads:/app/uploads
+      - ml_results:/app/results
+      - ml_models:/app/models
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8001/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Next.js Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laminor-web
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://laminor:laminor_password@postgres:5432/laminor_db
+      - ML_SERVICE_URL=http://ml-service:8001
+      - NODE_ENV=production
+      - SKIP_ENV_VALIDATION=1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ml-service:
+        condition: service_healthy
+    volumes:
+      - ml_results:/app/public/results
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  ml_uploads:
+  ml_results:
+  ml_models:
+

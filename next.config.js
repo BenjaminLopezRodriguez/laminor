@@ -15,6 +15,7 @@ const config = {
   images: {
     domains: ["picsum.photos"],
   },
+  output: "standalone",
 };
 
 export default config;
