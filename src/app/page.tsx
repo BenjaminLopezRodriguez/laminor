@@ -264,11 +264,11 @@ export default function Home() {
       {/* Hero Section */}
 
        {/* CREATING THE MANTRA SECTION */}
-       <section className="px-4 sm:px-6 py-16 md:py-24 relative overflow-hidden pt-56">
+       <section className="px-4 sm:px-6 py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
         <div className="mx-auto max-w-4xl text-center relative">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-50">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-50 mt-52">
             Turning data into useful insights
           </h1>
           <h2 className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
